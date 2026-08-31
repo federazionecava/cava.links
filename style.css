@@ -155,8 +155,8 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Animación de resplandor pulsante para el botón de Instagram */
-.link.instagram{
+/* Animación de resplandor pulsante para el botón de inscripción a la competencia */
+.link.competencia{
   border-width: 2px;
   animation: glow-pulse 2.2s ease-in-out infinite;
 }
@@ -174,8 +174,8 @@ html, body {
   }
 }
 
-.link.instagram:hover,
-.link.instagram:active{
+.link.competencia:hover,
+.link.competencia:active{
   animation-play-state: paused;
 }
-/* Fin del bloque animación de resplandor pulsante para el botón de Instagram */
+/* Fin del bloque animación de resplandor pulsante para el botón de inscripción a la competencia */
