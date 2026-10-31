@@ -1,4 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Jost:wght@400;500;600&display=swap');
+@font-face{
+  font-family: 'ZT Nature';
+  src: url('fonts/ZTNature-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face{
+  font-family: 'ZT Nature';
+  src: url('fonts/ZTNature-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face{
+  font-family: 'ZT Nature';
+  src: url('fonts/ZTNature-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face{
+  font-family: 'ZT Nature';
+  src: url('fonts/ZTNature-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
 
 :root{
   --laguna: #1f5c52;       /* verde laguna veneciana */
@@ -15,8 +38,8 @@
 body{
   margin: 0;
   min-height: 100dvh; /* mejor que 100vh en mobile */
-  background: url('fotos/fondito.png') center/cover no-repeat;
-  font-family: 'Jost', sans-serif;
+  background: url('fotos/fondito.jpg') center/cover no-repeat;
+  font-family: 'ZT Nature', sans-serif;
   color: var(--texto);
 
   display: grid;
@@ -54,12 +77,11 @@ body{
   border-radius:50%;
   margin: 0 auto 14px;
   box-shadow: 0 0 0 2px var(--laguna);
-  object-fit: cover; /* 👈 CLAVE */
-  display: block;     /* 👈 evita comportamientos raros inline */
+  object-fit: cover;
+  display: block;
 }
 
 h1{
-  font-family: 'Cormorant Garamond', serif;
   font-weight:700;
   font-size: 1.9rem;
   text-align:center;
@@ -124,9 +146,44 @@ h1{
 }
 .link:hover svg{ fill: var(--oro); }
 
+.idiomas{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  margin-top: 20px;
+}
+
+.idiomas button{
+  min-width:44px;
+  min-height:44px;
+  padding:0 8px;
+  background:none;
+  border:none;
+  border-radius:8px;
+  font-family:inherit;
+  font-size:0.85rem;
+  font-weight:500;
+  letter-spacing:1px;
+  color: var(--texto);
+  opacity:0.7;
+  cursor:pointer;
+}
+
+.idiomas button:hover{ opacity:1; }
+
+.idiomas button[aria-pressed="true"]{
+  font-weight:600;
+  color: var(--laguna);
+  opacity:1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--oro);
+  text-decoration-thickness: 2px;
+}
+
 footer{
   text-align:center;
-  margin-top: 26px;
+  margin-top: 12px;
   font-size: 0.8rem;
   letter-spacing:1.5px;
   color: rgba(43,36,26,0.45);
@@ -154,28 +211,3 @@ footer{
 html, body {
   overflow-x: hidden;
 }
-
-/* Animación de resplandor pulsante para el botón de inscripción a la competencia */
-.link.competencia{
-  border-width: 2px;
-  animation: glow-pulse 2.2s ease-in-out infinite;
-}
-
-@keyframes glow-pulse{
-  0%, 100%{
-    box-shadow: 0 0 0px rgba(199,161,90,0);
-    border-color: rgba(31,92,82,0.25);
-    transform: scale(1);
-  }
-  50%{
-    box-shadow: 0 0 22px 6px rgba(199,161,90,0.75);
-    border-color: var(--oro);
-    transform: scale(1.02);
-  }
-}
-
-.link.competencia:hover,
-.link.competencia:active{
-  animation-play-state: paused;
-}
-/* Fin del bloque animación de resplandor pulsante para el botón de inscripción a la competencia */

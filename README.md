@@ -2,7 +2,7 @@
 
 Página de enlaces (estilo "link in bio") para el **Comitato delle Associazioni Venete dell'Argentina**, pensada para escanear vía QR y usar principalmente desde el celular.
 
-Hecha en **HTML + CSS puro**, sin frameworks ni dependencias — liviana, fácil de editar y de hostear en cualquier lado.
+Hecha en **HTML + CSS**, con un script mínimo para los idiomas, sin frameworks ni dependencias — liviana, fácil de editar y de hostear en cualquier lado.
 
 
 ---
@@ -12,8 +12,17 @@ Hecha en **HTML + CSS puro**, sin frameworks ni dependencias — liviana, fácil
 ```
 .
 ├── index.html   → Estructura de la página (contenido, textos, links)
-└── style.css    → Todos los estilos (colores, tipografía, layout, animaciones)
+├── style.css    → Todos los estilos (colores, tipografía, layout)
+├── fonts/       → Tipografía ZT Nature en los pesos que usa la página
+└── fotos/       → Imágenes que usa la página
+    ├── isotipo.png       → Círculo arriba de los links
+    ├── iconoweb.png      → Ícono de la pestaña del navegador
+    ├── fondito.jpg       → Fondo de la página
+    ├── vista-previa.png  → Imagen al compartir el link
+    └── firma-logo.png    → Logo para la firma de mail
 ```
+
+> ⚠️ No muevas ni renombres `fotos/firma-logo.png`: las firmas de mail pueden estar usando su dirección.
 
 ---
 
@@ -42,7 +51,16 @@ Para agregar una red nueva, copiá un bloque `<a class="link">` existente, cambi
 > ⚠️ Importante: el mail usa `href="mailto:direccion@mail.com"` en vez de una URL normal — no lleva `target="_blank"`.
 
 ### Cambiar nombre, subtítulo o logo
-Están arriba de todo en `index.html`, antes de `<div class="links">`. El logo es una imagen (`<img>`) dentro de un contenedor circular — para cambiarlo, solo hay que reemplazar el `src`.
+Están arriba de todo en `index.html`, antes de `<div class="links">`. El logo es una imagen (`<img>`) que se muestra en un círculo — para cambiarlo, solo hay que reemplazar el `src`. Usá una versión achicada, no un original en alta resolución, que es mucho más pesado.
+
+### Cambiar textos e idiomas
+La página detecta el idioma del dispositivo y se muestra en español, italiano o inglés. Si el dispositivo está en otro idioma, queda en español. Los botones ES, IT y EN permiten cambiarlo, y la elección queda guardada en ese navegador.
+
+- Todos los textos están en `TRADUCCIONES`, dentro del `<script>` al final de `index.html`. Para cambiar un texto en español, cambialo ahí y también en el HTML.
+- Si agregás un botón, ponele `data-i18n="nombre"` a su texto y sumá `nombre` en cada idioma de `TRADUCCIONES`.
+
+### Cambiar la vista previa al compartir
+La tarjeta que aparece al pasar el link por WhatsApp o Facebook se define con las etiquetas `og:` del `<head>` de `index.html`, y su imagen es `fotos/vista-previa.png` (1200 x 630). Siempre sale en español, porque esas aplicaciones no detectan el idioma de quien recibe el link. Si cambia la dirección de la página, hay que actualizarla en `og:url` y `og:image`.
 
 ### Cambiar colores
 Todos los colores están centralizados como **variables CSS** al inicio de `style.css`, dentro de `:root`. Por ejemplo:
