@@ -146,6 +146,95 @@ h1{
 }
 .link:hover svg{ fill: var(--oro); }
 
+/* Link destacado: comitatocava.org */
+.link-destacado{
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  color: var(--crema);
+  background: linear-gradient(135deg, var(--terracota), #d9733f, var(--terracota));
+  background-size: 200% 200%;
+  border: 2px solid var(--oro);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: 0.3px;
+  animation: destacado-latido 1.8s ease-in-out infinite,
+             destacado-fondo 4s ease infinite;
+}
+
+.link-destacado svg{ fill: var(--oro); }
+
+.destacado-texto{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.destacado-sub{
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-top: 3px;
+}
+
+.link-destacado .flecha{
+  animation: destacado-flecha 1s ease-in-out infinite;
+}
+
+/* brillo que cruza el botón */
+.link-destacado::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.55), transparent);
+  transform: skewX(-20deg);
+  animation: destacado-brillo 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.link-destacado:hover{
+  background: var(--laguna);
+  border-color: var(--oro);
+  animation-play-state: paused;
+  transform: scale(1.04);
+}
+
+@keyframes destacado-latido{
+  0%, 100%{ transform: scale(1);    box-shadow: 0 0 0 0 rgba(201,162,39,0.7); }
+  50%     { transform: scale(1.04); box-shadow: 0 0 0 10px rgba(201,162,39,0); }
+}
+
+@keyframes destacado-fondo{
+  0%, 100%{ background-position: 0% 50%; }
+  50%     { background-position: 100% 50%; }
+}
+
+@keyframes destacado-brillo{
+  0%       { left: -60%; }
+  60%, 100%{ left: 130%; }
+}
+
+@keyframes destacado-flecha{
+  0%, 100%{ transform: translateX(0); }
+  50%     { transform: translateX(5px); }
+}
+
+/* Quien tiene activado "reducir movimiento" ve el botón resaltado pero quieto */
+@media (prefers-reduced-motion: reduce){
+  .link-destacado,
+  .link-destacado .flecha,
+  .link-destacado::after{
+    animation: none;
+  }
+}
+
 .idiomas{
   display:flex;
   justify-content:center;
